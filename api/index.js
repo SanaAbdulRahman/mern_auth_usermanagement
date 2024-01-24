@@ -1,11 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { error } from 'console';
+import userRoute from './routes/userRoute.js';
+
 dotenv.config();
 
 const app = express();
 
+app.use('/api/user', userRoute);
 
 mongoose.connect(process.env.MONGOURI).then(() => {
     console.log("Connected to mongoDB");
